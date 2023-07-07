@@ -105,7 +105,7 @@ bonus-blockd keys add rues
 ```
 bonus-blockd tx staking create-validator \
 --amount 900000ubonus \
---pubkey $(blockxd tendermint show-validator) \
+--pubkey $(bonus-blockd tendermint show-validator) \
 --moniker "yourMonikerName" \
 --identity "yourKeybaseId" \
 --details "yourDetails" \
