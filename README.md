@@ -1,22 +1,41 @@
-<h1 align="center"> Bonus Block </h1>
+<h1 align="center"> BonusBlock hakkında </h1>
 
-![image](https://github.com/ruesandora/bonus-block/assets/101149671/499f1907-d4bf-4345-9b3f-0bdc1164f3d1)
+> Bu repo uzun süredir mevcut, bende sanırım 2-3 aydır bonusblock node'u çalıştırıyorum.
 
-<h1 align="center"> About BonusBlock </h1>
+> Paylaşma nedenim yatırım aldığını gördüm, bu demek değildir ki testnet ödüllü.
 
+> Ne kadar sürecek bilgim yok, teşvikli testnet olacak kesin, `blocktopia-01` için belirsiz.
+
+> Bazı sunucularım var %80'i boşta ve çalışmıyor, bende böyle değerlendiriyorum, belki sizde de vardır.
+
+> Topluluk kanallarım: [Duyuru](https://t.me/RuesAnnouncement) - [Chat](https://t.me/RuesChat)
+
+<h1 align="center"> Gereksinimler </h1>
+
+> Tartışmasız, yüksek uptime ve f/p'dan dolayı tercih ettiğim [sunucu](https://github.com/ruesandora/Hetzner) ve [Hesap oluşturma](https://hetzner.cloud/?ref=gIFAhUnYYjD3)
+
+* Kullanmış olduğum:
 ```
-> I have been running the Bonus Block validator and testing the chain for about 2 months.
-> I love the protocol I will continue to test Bonus Block.
+2 CPU
+4 RAM
+150 SSD
 ```
 
-<h1 align="center"> Updates and required packages </h1>
+* Tavsiye edilen:
+```
+4 CPU
+8 RAM
+400 SSD
+```
+
+<h1 align="center"> Güncellemeler ve gerekli paketler </h1>
 
 ```sh
-# Update system and install build tools
+# Sistemi güncelliyoruz
 sudo apt update
 sudo apt-get install git curl build-essential make jq gcc snapd chrony lz4 tmux unzip bc -y
 
-# Install Go
+# go'yu yüklüyoruz
 rm -rf $HOME/go
 sudo rm -rf /usr/local/go
 cd $HOME
@@ -33,7 +52,7 @@ source $HOME/.profile
 go version
 ```
 
-<h1 align="center"> Installing the node </h1>
+<h1 align="center"> Node'u yüklüyoruz </h1>
 
 ```sh
 cd $HOME
@@ -47,10 +66,10 @@ make install
 bonus-blockd version
 ```
 
-<h1 align="center"> Initalization processes </h1>
+<h1 align="center"> İnitalizasyon işlemleri </h1>
 
 ```sh
-# Replace monikerName with your own nickname.
+# monikerName'i kendi isminizle değişin değiştirin.
 bonus-blockd init monikerName --chain-id=blocktopia-01
 
 # Genesis
@@ -60,7 +79,7 @@ curl -Ls https://ss-t.bonusblock.nodestake.top/genesis.json > $HOME/.bonusblock/
 curl -Ls https://ss-t.bonusblock.nodestake.top/addrbook.json > $HOME/.bonusblock/config/addrbook.json
 ```
 
-<h1 align="center"> Service file creation </h1>
+<h1 align="center"> Servis dosyası oluşturma </h1>
 
 ```
 sudo tee /etc/systemd/system/bonus-blockd.service > /dev/null <<EOF
@@ -91,16 +110,16 @@ sudo systemctl restart bonus-blockd
 journalctl -u bonus-blockd -f
 ```
 
-> After your node syncs:
+> node sync olduktan sonra:
 
 ```
-# Please keep your wallet details
+# kendi cüzdan isminizi oluşturun
 bonus-blockd keys add rues
 ```
 
-> Then get the test token from [this](https://faucet.bonusblock.io/).
+> [Buradan](https://faucet.bonusblock.io/). test tokeni alın.
 
-> If you sync, you can create a validator:
+> Sync olunca da validatörünüzü oluşturun.:
 
 ```
 bonus-blockd tx staking create-validator \
@@ -121,7 +140,9 @@ bonus-blockd tx staking create-validator \
 -y
 ```
 
-> You can view yourself through explorer [here](https://explorer.nodestake.top/bonusblock-testnet/staking/bonusvaloper1du5pqppjfcrmdcm9js28sc6nqhvg4wfx6qfwck).
+> [Buradan](https://explorer.nodestake.top/bonusblock-testnet/staking/bonusvaloper1du5pqppjfcrmdcm9js28sc6nqhvg4wfx6qfwck). explorer'i kullanabilirsiniz.
+
+> BonusBlock henüz discordu yok olsa paylaşırdım.
 
 
 
