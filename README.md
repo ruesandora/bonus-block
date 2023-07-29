@@ -60,9 +60,10 @@ rm -rf BonusBlock-chain/
 git clone https://github.com/BBlockLabs/BonusBlock-chain
 
 cd BonusBlock-chain/
-git checkout v0.1.2
+git checkout v0.1.39
 
 make install
+
 bonus-blockd version
 ```
 
@@ -82,16 +83,16 @@ curl -Ls https://ss-t.bonusblock.nodestake.top/addrbook.json > $HOME/.bonusblock
 <h1 align="center"> Servis dosyası oluşturma </h1>
 
 ```
-sudo tee /etc/systemd/system/bonus-blockd.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/bonus-blockd.service > /dev/null << EOF
 [Unit]
-Description=bonus-blockd Daemon
+Description=Bonusblock Node
 After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which bonus-blockd) start
-Restart=always
-RestartSec=3
-LimitNOFILE=65535
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=10000
 [Install]
 WantedBy=multi-user.target
 EOF
