@@ -60,6 +60,9 @@ rm -rf BonusBlock-chain/
 git clone https://github.com/BBlockLabs/BonusBlock-chain
 
 cd BonusBlock-chain/
+git fetch --all
+git pull --all
+git tag v0.1.39
 git checkout v0.1.39
 
 make install
